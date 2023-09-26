@@ -1,0 +1,234 @@
+:root {
+  --bg-url: url("assets/images/image-web-3-mobile.jpg");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: inter;
+  src: url(assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+body {
+  font-family: inter;
+  background-color: hsl(36, 100%, 99%);
+  display: block;
+}
+
+header {
+  position: relative;
+  grid-area: header;
+}
+header nav {
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row;
+}
+header nav > img {
+  height: clamp(2rem, 3vw + 1rem, 3.5rem);
+}
+header nav .nav-links {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-flow: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.2s ease;
+}
+header nav .nav-links .close {
+  align-self: flex-end;
+  padding: 2rem 1.5rem 0 0;
+}
+header nav .nav-links ul {
+  position: absolute;
+  height: 100%;
+  width: 60%;
+  background-color: hsl(36, 100%, 99%);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: column;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  right: -100%;
+  transition: 0.4s ease;
+}
+header nav .nav-links ul li a {
+  color: rgb(73, 73, 73);
+  text-decoration: none;
+}
+header nav .nav-links ul li a:hover {
+  color: hsl(5, 85%, 63%);
+}
+
+main {
+  margin-bottom: 4rem;
+  grid-area: main;
+}
+main .hero {
+  background: center/cover no-repeat var(--bg-url);
+  grid-area: hero;
+  width: 100%;
+  height: 20rem;
+}
+main h1 {
+  grid-area: intro;
+  margin: 0.5rem auto;
+  font-size: 40px;
+  color: hsl(240, 100%, 5%);
+  font-weight: 900;
+}
+main p {
+  font-size: 14px;
+  line-height: 1.5rem;
+  color: hsl(236, 25%, 39%);
+}
+main button {
+  border: 0;
+  color: hsl(36, 100%, 99%);
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  background-color: hsl(5, 85%, 63%);
+  padding: 1rem 2rem;
+}
+main button:hover {
+  background-color: black;
+}
+main button a {
+  color: white;
+  text-decoration: none;
+}
+main .read-more {
+  grid-area: readmore;
+}
+
+aside {
+  margin-bottom: 4rem;
+  padding: 1.5rem 1rem;
+  background-color: hsl(240, 100%, 5%);
+  grid-area: aside;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-flow: column;
+}
+aside h1 {
+  margin: 0;
+  color: hsl(35, 77%, 62%);
+}
+aside .news-card {
+  width: 100%;
+  color: hsl(36, 100%, 99%);
+  border-bottom: 1px solid white;
+}
+aside .news-card h3 {
+  color: hsl(36, 100%, 99%);
+}
+aside .news-card p {
+  color: rgb(169, 168, 168);
+}
+aside .news-card a {
+  color: hsl(36, 100%, 99%);
+  text-decoration: none;
+}
+aside .news-card a:hover {
+  color: hsl(35, 77%, 62%);
+}
+
+footer {
+  grid-area: footer;
+}
+footer .footer-card {
+  /*display: grid;
+  grid-template-columns: 35% 65%;*/
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: row;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+footer .footer-card img {
+  max-height: 10%;
+}
+footer .footer-card .footer-card-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-flow: column;
+  gap: 2rem;
+}
+footer .footer-card .footer-card-content * {
+  margin: 0;
+}
+footer .footer-card .footer-card-content h1 {
+  color: rgb(194, 194, 194);
+}
+footer .footer-card .footer-card-content h4 {
+  font-weight: 800;
+}
+footer .footer-card .footer-card-content h4 a {
+  color: black;
+  text-decoration: none;
+}
+footer .footer-card .footer-card-content h4 a:hover {
+  color: hsl(5, 85%, 63%);
+}
+footer .footer-card .footer-card-content p {
+  color: hsl(236, 25%, 39%);
+  font-size: 14px;
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    --bg-url: url("assets/images/image-web-3-desktop.jpg");
+    display: grid;
+    grid-template-areas: "header header header" "main main aside" "footer footer footer" "attr attr attr";
+    gap: 1rem;
+  }
+  header nav .nav-links {
+    background-color: white;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: inherit;
+    opacity: 1;
+    position: static;
+    display: block;
+    z-index: 10;
+  }
+  header nav .nav-links ul {
+    margin-right: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    position: static;
+    width: inherit;
+  }
+  header nav :is(.close, .toggle) {
+    display: none;
+  }
+  main {
+    display: grid;
+    grid-template-areas: "hero hero" "intro readmore";
+    gap: 1rem;
+  }
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: row;
+  }
+}/*# sourceMappingURL=styles.css.map */

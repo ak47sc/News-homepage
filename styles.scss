@@ -1,0 +1,254 @@
+$body-bg-color:hsl(36, 100%, 99%);
+$heading-color : hsl(240, 100%, 5%);
+$para-color : hsl(236, 25%, 39%);
+$button-color : hsl(5, 85%, 63%);
+$aside-bg-color : hsl(240, 100%, 5%);
+$aside-heading-color : hsl(35, 77%, 62%);
+:root{
+    --bg-url : url("assets/images/image-web-3-mobile.jpg");
+}
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: inter;
+    src: url(assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+@mixin flexbox($justify, $align, $dir) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-flow: $dir;
+}
+
+body {
+    font-family: inter;
+    background-color: $body-bg-color;
+    display: block;
+}
+
+header {
+    position: relative;
+    grid-area: header;
+
+    nav {
+        height: 4rem;
+        @include flexbox(space-between, center, row);
+
+        &>img {
+            height: clamp(2rem ,3vw + 1rem,3.5rem)
+        }
+        .nav-links {
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            @include flexbox(flex-start, flex-end, column);
+            position: fixed;
+
+            top: 0;
+            right: 0;
+            z-index: -1;
+            opacity: 0;
+
+            transition: 0.2s ease;
+
+            .close {
+                align-self: flex-end;
+                padding: 2rem 1.5rem 0 0;
+            }
+
+            ul {
+                position: absolute;
+                height: 100%;
+                width: 60%;
+                background-color: $body-bg-color;
+                @include flexbox(flex-start, flex-start, column);
+                list-style: none;
+                gap: 2rem;
+                margin: 0;
+
+                right: -100%;
+
+                transition: 0.4s ease;
+                li{
+                    a{
+                        color: rgb(73, 73, 73);
+                        text-decoration: none;
+                        &:hover{
+                            color: $button-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+main {
+    margin-bottom: 4rem;
+    grid-area: main;
+
+    .hero {
+        background:center/cover no-repeat var(--bg-url);
+        grid-area: hero;
+        width: 100%;
+        height: 20rem;
+    }
+
+    h1 {
+        grid-area: intro;
+        margin: 0.5rem auto;
+        font-size: 40px;
+        color: $heading-color;
+        font-weight: 900;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.5rem;
+        color: $para-color;
+    }
+
+    button {
+        border: 0;
+        color: $body-bg-color;
+        font-weight: 600;
+        letter-spacing: 0.2rem;
+        background-color: $button-color;
+        padding: 1rem 2rem;
+        
+        &:hover{
+            background-color: black;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+    }
+    .read-more{
+        grid-area: readmore;
+    }
+}
+
+aside {
+    margin-bottom: 4rem;
+    padding: 1.5rem 1rem;
+    background-color: $aside-bg-color;
+    grid-area: aside;
+    @include flexbox(space-evenly,flex-start ,column );
+    h1 {
+        margin: 0;
+        color: $aside-heading-color;
+    }
+
+    .news-card {
+        width: 100%;
+        color: $body-bg-color;
+        border-bottom: 1px solid white;
+
+        h3 {
+            color: $body-bg-color
+        }
+
+        p {
+            color: rgb(169, 168, 168);
+        }
+
+        a{
+            color: $body-bg-color;
+            text-decoration: none;
+            &:hover{
+                color: $aside-heading-color;
+            }
+        }
+    }
+}
+
+footer {
+    grid-area: footer;
+
+    .footer-card {
+        /*display: grid;
+        grid-template-columns: 35% 65%;*/
+        @include flexbox(flex-start,center ,row );
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
+        
+        img {
+            max-height:10%;
+        }
+
+        .footer-card-content {
+            * {
+                margin: 0;
+            }
+
+            @include flexbox(space-evenly, flex-start, column);
+            gap: 2rem;
+
+            h1 {
+                color: rgb(194, 194, 194);
+            }
+
+            h4 {
+                font-weight: 800;
+                a{
+                    color: black;
+                    text-decoration: none;
+                    &:hover{
+                        color: $button-color;
+                    }
+                }
+            }
+
+            p {
+                color: $para-color;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:800px) {  
+    body {
+        --bg-url : url("assets/images/image-web-3-desktop.jpg");
+        display: grid;
+        grid-template-areas: "header header header" "main main aside" "footer footer footer""attr attr attr";
+        gap: 1rem;
+    }
+
+    header {
+        nav {
+            .nav-links {
+                background-color: white;
+                width: fit-content;
+                height: inherit;
+                opacity: 1;
+                position: static;
+                display: block;
+                z-index: 10;
+                ul {
+                    margin-right: 2rem;
+                    @include flexbox(center, center, row);
+                    position: static;
+                    width: inherit;
+                }
+            }
+            :is(.close , .toggle){
+                display: none;
+            }
+        }
+    }
+
+    main{
+        display: grid;
+        grid-template-areas: "hero hero" "intro readmore";
+        gap: 1rem
+    }
+    footer{
+        @include flexbox(center, flex-start, row);
+    }
+}

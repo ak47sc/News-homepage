@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | News homepage</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .attribution { font-size: 11px; text-align: center;grid-area: attr; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="assets/images/logo.svg" alt="W">
+      <div class="nav-links">
+        <ul>
+          <img src="assets/images/icon-menu-close.svg" alt="close" class="close">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">New</a></li>
+          <li><a href="#">Popular</a></li>
+          <li><a href="#">Trending</a></li>
+          <li><a href="#">Categories</a></li>
+        </ul>
+      </div>
+      <div class="toggle">
+        <img src="assets/images/icon-menu.svg" alt="Menu">
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero"></div>
+    <h1>The Bright Future of Web 3.0?</h1>
+    <div class="read-more">
+      <p>
+        We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. 
+        But is it really fulfilling its promise?
+      </p>
+      <button type="button"><a href="#">READ MORE</a></button>
+    </div>
+  </main>
+
+  <aside>
+    <h1>New</h1>
+    <div class="news-card">
+      <h3><a href="#">Hydrogen VS Electric Cars</a></h3>
+      <p>
+        Will hydrogen-fueled cars ever catch up to EVs?
+      </p>
+    </div>
+    <div class="news-card">
+      <h3><a href="#">The Downsides of AI Artistry</a></h3>
+      <p>
+        What are the possible adverse effects of on-demand AI image generation?
+      </p>
+    </div>
+    <div class="news-card">
+      <h3><a href="#">Is VC Funding Drying Up?</a></h3>
+      <p>
+        Private funding by VC firms is down 50% YOY. We take a look at what that means.
+      </p>
+    </div>
+  </aside>
+
+  <footer>
+    <div class="footer-card">
+      <img src="assets/images/image-retro-pcs.jpg" alt="retro Pc">
+      <div class="footer-card-content">
+        <h1>01</h1>
+        <h4><a href="#">Retro PCs</a></h4>
+        <p>
+          What happens when old PCs are given modern upgrades?
+        </p>
+      </div>
+    </div>
+    <div class="footer-card">
+      <img src="assets/images/image-top-laptops.jpg" alt="retro Pc">
+      <div class="footer-card-content">
+        <h1>02</h1>
+        <h4><a href="#">Top 10 Laptops of 2022</a></h4>
+        <p>
+          Our best picks for various needs and budgets.
+        </p>
+      </div>
+    </div>
+    <div class="footer-card">
+      <img src="assets/images/image-gaming-growth.jpg" alt="retro Pc">
+      <div class="footer-card-content">
+        <h1>03</h1>
+        <h4><a href="#">The Growth of Gaming</a></h4>
+        <p>
+          How the pandemic has sparked fresh opportunities.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://www.frontendmentor.io/profile/ak47sc" target="_blank">Akash H</a>.
+  </div>
+
+  <script>
+    const toggle_btn = document.querySelector(".toggle");
+    const close_btn = document.querySelector(".close");
+    const nav_links = document.querySelector(".nav-links");
+    const ul_ele = document.querySelector(".nav-links ul");
+    toggle_btn.addEventListener("click",()=>{
+      nav_links.setAttribute("style","z-index: 1;opacity: 1;");
+      ul_ele.setAttribute("style","right: 0;");
+    });
+
+    close_btn.addEventListener("click",()=>{
+      nav_links.removeAttribute("style");
+      ul_ele.removeAttribute("style");
+    });
+  </script>
+</body>
+</html>
